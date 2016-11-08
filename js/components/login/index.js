@@ -66,7 +66,7 @@ class Login extends Component {
                                 style={styles.loginBtn} textStyle={{fontSize: 17}}  >
                                 Get Started
                             </Button>
-                            
+
                             <View style={styles.otherLinksContainer}>
                                 <Grid>
                                     <Col>

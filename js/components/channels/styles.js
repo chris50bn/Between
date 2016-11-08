@@ -15,7 +15,7 @@ module.exports = StyleSheet.create({
     },
     bgHead: {
         backgroundColor: primary,
-        padding: 20
+        padding: 30
     },
     channelBtn1: {
         borderWidth: 1,
@@ -23,13 +23,13 @@ module.exports = StyleSheet.create({
     },
     na: {},
     channelImg: {
-        height: (deviceHeight/4) + 10,
+        height: (deviceHeight/4) + 5,
         width: (deviceWidth/2)
     },
     ioschannelImgText: {
         fontSize: 12,
         fontWeight: '900',
-        padding: 20,
+        padding: 0,
         paddingLeft: 0,
         paddingBottom: 0,
         marginBottom: 0,

@@ -12,8 +12,8 @@ module.exports = StyleSheet.create({
 	},
 	rowHeader: {
 		flex: 1,
-		flexDirection: 'row', 
-		justifyContent: 'space-between', 
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 		alignSelf: 'stretch',
 		paddingTop: Platform.OS === 'android' ? 7 : 0
 	},
@@ -21,7 +21,7 @@ module.exports = StyleSheet.create({
 		paddingTop: 10
 	},
 	imageHeader: {
-		height: 25, 
+		height: 25,
 		width: 95,
 		resizeMode: 'contain',
 		marginTop: 10

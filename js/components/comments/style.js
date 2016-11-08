@@ -16,11 +16,11 @@ module.exports = StyleSheet.create({
         marginTop: -5
     },
     headerBtns : {
-        padding: 10,
+        padding: 5,
         alignSelf: 'center'
     },
     headerIcons : {
-        fontSize: 30
+        fontSize: 25
     },
     headerTextIcon: {
         fontSize: 28,

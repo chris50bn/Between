@@ -110,7 +110,7 @@ module.exports = StyleSheet.create({
         alignSelf: 'center'
     },
     headerIcons : {
-        fontSize: 30
+        fontSize: 25
     },
     headerContainer: {
         flex: 1,
@@ -120,7 +120,7 @@ module.exports = StyleSheet.create({
         marginTop: -5
     },
     headerBtns : {
-        padding: 10
+        padding: 5
     },
     headerTextIcon: {
         fontSize: 28,
