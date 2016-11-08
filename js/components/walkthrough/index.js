@@ -34,13 +34,13 @@ class Walkthrough extends Component {
                             </Text>
                             <Icon name='ios-paper-outline' style={styles.imageIcons} />
                             <Text numberOfLines={2} style={Platform.OS === 'android' ? styles.aText : styles.iosText}>
-                                Explore the latest news from your mobile device
+                                Explore la mejor aplicación para debates en un dispositivo móvil
                             </Text>
                             <Button
                                 transparent rounded
                                 onPress={() => this.replaceRoute('home')}
                                 style={styles.Button}  >
-                                Skip To App
+                                Saltar a la Aplicación
                             </Button>
                         </View>
 
@@ -50,14 +50,14 @@ class Walkthrough extends Component {
                             </Text>
                             <Icon name='ios-information-circle-outline' style={styles.imageIcons} />
                             <Text numberOfLines={2} style={Platform.OS === 'android' ? styles.aText : styles.iosText}>
-                                Lorem Ipsum industry's standard dummy text
+
                             </Text>
                             <Button
                                 transparent rounded
                                 onPress={() => this.replaceRoute('home')}
                                 style={styles.Button}
                             >
-                                Skip To App
+                                Saltar a la Aplicación
                             </Button>
                         </View>
 
@@ -74,7 +74,7 @@ class Walkthrough extends Component {
                                 onPress={() => this.replaceRoute('home')}
                                 style={styles.Button}
                             >
-                                Continue To App
+                                Continuar a la Aplicación
                             </Button>
                         </View>
                     </Swiper>

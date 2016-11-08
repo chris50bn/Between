@@ -45,7 +45,7 @@ class Feedback extends Component {
                                     <Icon name='ios-menu' style={{fontSize: 32, lineHeight: 36}}  />
                                 </Button>
 
-                                <Image source={require('../../../images/Header-Logo.png')} style={styles.imageHeader}>
+                                <Image source={require('../../../images/Header-Logonew.png')} style={styles.imageHeader}>
                                 </Image>
 
                                 <Button transparent style={styles.btnHeader} onPress={() => this.resetRoute('login')}>

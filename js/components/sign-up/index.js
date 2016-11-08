@@ -37,22 +37,22 @@ class SignUp extends Component {
                         <Image source={require('../../../images/BG-signUp.png')} style={styles.background} >
                             <Content padder>
                                 <Text style={styles.signupHeader}>
-                                    CREATE ACCOUNT
+                                    CREAR USUARIO
                                 </Text>
                                 <View style={styles.signupContainer}>
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-person-outline' />
-                                        <Input placeholder='Username'  style={styles.input}/>
+                                        <Input placeholder='Nombre de Usuario'  style={styles.input}/>
                                     </InputGroup>
 
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-mail-open-outline' />
-                                        <Input placeholder='Email'  style={styles.input}/>
+                                        <Input placeholder='Correo Electrónico'  style={styles.input}/>
                                     </InputGroup>
 
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-unlock-outline' />
-                                        <Input placeholder='Password' secureTextEntry={true}  style={styles.input}/>
+                                        <Input placeholder='Contraseña' secureTextEntry={true}  style={styles.input}/>
                                     </InputGroup>
 
                                     <Button

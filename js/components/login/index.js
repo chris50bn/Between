@@ -37,15 +37,15 @@ class Login extends Component {
         return (
             <Container>
                 <Content theme={login}>
-                    <Image source={require('../../../images/BG.png')} style={styles.background} >
-                        <Image source={require('../../../images/logo.png')} style={Platform.OS === 'android' ? styles.aShadow : styles.iosShadow} />
+                    <Image source={require('../../../images/BG-signUpnew.png')} style={styles.background} >
+                        <Image source={require('../../../images/B_Logo_07.png')} style={Platform.OS === 'android' ? styles.aShadow : styles.iosShadow} />
                         <View style={styles.bg}>
                             <InputGroup
                                 borderType='rounded'
                                 style={[styles.inputGrp, {borderWidth: 0, paddingLeft: 15}]}
                             >
                                 <Icon name='ios-person-outline' />
-                                <Input placeholder='Username' style={styles.input} onChangeText={(username) => this.setState({username})}/>
+                                <Input placeholder='Nombre de Usuario' style={styles.input} onChangeText={(username) => this.setState({username})}/>
                             </InputGroup>
 
                             <InputGroup
@@ -54,7 +54,7 @@ class Login extends Component {
                             >
                                 <Icon name='ios-unlock-outline' />
                                 <Input
-                                    placeholder='Password'
+                                    placeholder='Contraseña'
                                     secureTextEntry={true}
                                     style={styles.input}
                                 />
@@ -64,7 +64,7 @@ class Login extends Component {
                                 rounded primary block
                                 onPress={() => this.replaceRoute('walkthrough')}
                                 style={styles.loginBtn} textStyle={{fontSize: 17}}  >
-                                Get Started
+                                Ingresar
                             </Button>
 
                             <View style={styles.otherLinksContainer}>
@@ -76,7 +76,7 @@ class Login extends Component {
                                             onPress={() => this.pushNewRoute('signUp')}
                                         >
                                             <Text style={styles.helpBtns}>
-                                                Create Account
+                                                Crear Usuario
                                             </Text>
                                         </Button>
                                     </Col>
@@ -87,7 +87,7 @@ class Login extends Component {
                                             onPress={() => this.pushNewRoute('needhelp')}
                                         >
                                             <Text style={styles.helpBtns}>
-                                                Need Help?
+                                                ¿Ayuda?
                                             </Text>
                                         </Button>
                                     </Col>

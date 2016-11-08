@@ -14,7 +14,7 @@ module.exports = StyleSheet.create({
         width: (deviceWidth/4)+12,
         height:  (deviceHeight/100),
         alignSelf: 'center',
-        marginTop: (deviceHeight/5) 
+        marginTop: (deviceHeight/5)
     },
     aShadow: {
         flex: 1,

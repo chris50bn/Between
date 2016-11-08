@@ -39,24 +39,23 @@ class NeedHelp extends Component {
 
                             <Content padder>
                                 <Text style={styles.signupHeader}>
-                                    Forgot Your Password?
+                                  Olvidaste tu Contraseña?
                                 </Text>
                                 <View style={styles.signupContainer}>
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-mail-open-outline' />
-                                        <Input placeholder='Email' style={styles.input}/>
+                                        <Input placeholder='Correo Electrónico' style={styles.input}/>
                                     </InputGroup>
 
                                     <Button
-                                        rounded block transparent 
+                                        rounded block transparent
                                         onPress={() => this.popRoute()}
-                                        style={styles.signupBtn}
-                                    >
-                                        Send Email
+                                        style={styles.signupBtn}>
+                                        Enviar Correo
                                     </Button>
 
                                     <TouchableOpacity  onPress={() => this.popRoute()}>
-                                        <Text style={styles.termsText}>Back To Login</Text>
+                                        <Text style={styles.termsText}>Volver Para Iniciar Sesión</Text>
                                     </TouchableOpacity>
                                 </View>
                             </Content>
