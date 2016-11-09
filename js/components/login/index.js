@@ -11,6 +11,7 @@ import { Grid, Col, Row } from 'react-native-easy-grid';
 
 import login from './login-theme';
 import styles from './styles';
+var URL='http://between.azurewebsites.net/RestServer1/ws/cliente/insertUsuario';
 
 class Login extends Component {
 

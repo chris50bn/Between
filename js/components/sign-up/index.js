@@ -10,6 +10,7 @@ import { Container, Content, Text, Button, Icon, InputGroup, Input, View } from 
 
 import theme from '../login/login-theme';
 import styles from './styles';
+var URL='http://between.azurewebsites.net/RestServer1/ws/cliente/insertUsuario';
 
 class SignUp extends Component {
 
@@ -19,7 +20,11 @@ class SignUp extends Component {
             offset: {
                 x:0,
                 y:0
-            }
+            },
+            nombre: '',
+            apellidos: '',
+            correo: '',
+            contrasena: '',
         };
         this.constructor.childContextTypes = {
             theme: React.PropTypes.object,
@@ -28,6 +33,18 @@ class SignUp extends Component {
 
     popRoute() {
         this.props.popRoute();
+    }
+
+
+  onRegisterPressed(){
+    fetch(URL+"?" + "nombre="+this.state.nombre+" &apellido= "+this.state.apellidos+"&contrasenna="+this.state.contrasena+"&correo="+this.state.correo+"&tipo=1")
+      .then(function(res) {
+          return res.json(),
+          () => this.popRoute()
+      })
+      .then(json => callback(null, json))
+      .catch(error => callback(error, null))
+
     }
 
     render() {
@@ -42,23 +59,30 @@ class SignUp extends Component {
                                 <View style={styles.signupContainer}>
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-person-outline' />
-                                        <Input placeholder='Nombre de Usuario'  style={styles.input}/>
+                                        <Input placeholder='Nombre de Usuario'  style={styles.input} onChangeText={(val) => this.setState({nombre: val})}/>
+                                    </InputGroup>
+
+                                    <InputGroup borderType='rounded' style={styles.inputGrp}>
+                                        <Icon name='ios-person-outline' />
+                                        <Input placeholder='Apellido'  style={styles.input} onChangeText={(val) => this.setState({apellidos: val})}/>
                                     </InputGroup>
 
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-mail-open-outline' />
-                                        <Input placeholder='Correo Electrónico'  style={styles.input}/>
+                                        <Input placeholder='Correo Electrónico'  style={styles.input} onChangeText={(val) => this.setState({correo: val})}/>
                                     </InputGroup>
 
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-unlock-outline' />
-                                        <Input placeholder='Contraseña' secureTextEntry={true}  style={styles.input}/>
+                                        <Input placeholder='Contraseña' secureTextEntry={true}  style={styles.input}  onChangeText={(val) => this.setState({contrasena: val})}/>
                                     </InputGroup>
 
                                     <Button
                                         rounded transparent  block
-                                        onPress={() => this.popRoute()}
+                                        //onPress={}
                                         style={styles.signupBtn}
+                                        onPress={this.onRegisterPressed.bind(this)}
+
                                     >
                                         Continue
                                     </Button>

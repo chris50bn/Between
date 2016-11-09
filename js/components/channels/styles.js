@@ -29,7 +29,7 @@ module.exports = StyleSheet.create({
     ioschannelImgText: {
         fontSize: 12,
         fontWeight: '900',
-        padding: 0,
+        padding: 20,
         paddingLeft: 0,
         paddingBottom: 0,
         marginBottom: 0,
