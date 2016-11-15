@@ -49,8 +49,8 @@ class Walkthrough extends Component {
                                 2 of 3
                             </Text>
                             <Icon name='ios-information-circle-outline' style={styles.imageIcons} />
-                            <Text numberOfLines={2} style={Platform.OS === 'android' ? styles.aText : styles.iosText}>
-
+                            <Text numberOfLines={3} style={Platform.OS === 'android' ? styles.aText : styles.iosText}>
+                                  App de debates para la Escuela de Relaciones Internacionales, Universidad Latina
                             </Text>
                             <Button
                                 transparent rounded
@@ -67,7 +67,7 @@ class Walkthrough extends Component {
                             </Text>
                             <Icon name='ios-volume-up-outline' style={styles.imageIcons} />
                             <Text numberOfLines={2} style={Platform.OS === 'android' ? styles.aText : styles.iosText}>
-                                Lorem Ipsum is not simply random text
+                                Between app de debates
                             </Text>
                             <Button
                                 transparent rounded

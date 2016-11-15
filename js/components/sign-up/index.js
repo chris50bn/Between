@@ -37,15 +37,22 @@ class SignUp extends Component {
 
 
   onRegisterPressed(){
-    fetch(URL+"?" + "nombre="+this.state.nombre+" &apellido= "+this.state.apellidos+"&contrasenna="+this.state.contrasena+"&correo="+this.state.correo+"&tipo=1")
-      .then(function(res) {
-          return res.json(),
-          () => this.popRoute()
+    try {
+      fetch(URL+"?" + "nombre="+this.state.nombre+" &apellido= "+this.state.apellidos+"&contrasenna="+this.state.contrasena+"&correo="+this.state.correo+"&tipo=1")
+        .then(function(res) {
+        return res.json(),
+        this.redirect('home')
       })
       .then(json => callback(null, json))
       .catch(error => callback(error, null))
 
+    } catch(error) {
+        this.setState({error: error});
+        console.log("error " + error);
+        this.setState({showProgress: false});
     }
+  }
+
 
     render() {
         return (

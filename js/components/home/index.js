@@ -13,19 +13,25 @@ import Swiper from 'react-native-swiper';
 import HeaderContent from './../headerContent/';
 
 import theme from '../../themes/base-theme';
+import usuario from '../login/index';
 import styles from './styles';
+
+var user = require('../login/index').usuario;
 
 class Home extends Component {
 
     constructor(props) {
         super(props);
+        this.state={
+          nombre:'',
+        };
     }
 
     pushNewRoute(route) {
          this.props.pushNewRoute(route);
     }
 
-    render() {
+    render(user) {
         return (
             <Container theme={theme} style={{backgroundColor: '#fff'}}>
                 <Image source={require('../../../images/glow2.png')} style={styles.container} >
@@ -43,11 +49,11 @@ class Home extends Component {
                                     activeDot={<View style={styles.swiperActiveDot}
                                     showsButtons={true} />}
                                 >
-                                    <TouchableOpacity  onPress={() => this.pushNewRoute('story')} style={styles.slide}>
-                                        <Image style={styles.newsPoster} source={require('../../../images/NewsIcons/1.jpg')} >
+                                    <TouchableOpacity  onPress={() => this.pushNewRoute('story')} style={styles.slide}   onChangeText={(nombre) => this.setState({user})}>
+                                        <Image style={styles.newsPoster} source={require('../../../images/base_image.jpg')} >
                                             <View style={styles.swiperTextContent} >
-                                            <Text numberOfLines={2} style={styles.newsPosterHeader}>
-                                                Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                            <Text numberOfLines={3} style={styles.newsPosterHeader}>
+                                                El debate australiano consiste en que dos equipos de tres miembros discuten sobre un asunto al que se suele llamar proposición. , {usuario.username}.
                                             </Text>
                                             <Grid style={styles.swiperContentBox}>
                                                 <Col style={{flexDirection:'row'}}>
@@ -68,18 +74,18 @@ class Home extends Component {
                                     </TouchableOpacity>
 
                                     <TouchableOpacity  onPress={() => this.pushNewRoute('story')} style={styles.slide}>
-                                        <Image style={styles.newsPoster} source={require('../../../images/NewsIcons/3.jpg')}>
+                                        <Image style={styles.newsPoster} source={require('../../../images/fachada.jpg')}>
                                             <View  style={styles.swiperTextContent}>
                                                 <Text numberOfLines={2} style={styles.newsPosterHeader}>
-                                                    Lorem Ipsum is simply dummy text of the printing
+                                                  Universidad Latina de Costa Rica, Escuela de Relaciones Internacionales.
                                                 </Text>
                                                 <Grid style={styles.swiperContentBox}>
                                                     <Col style={{flexDirection:'row'}}>
                                                         <TouchableOpacity>
-                                                            <Text style={styles.newsPosterLink}>CDC</Text>
+                                                            <Text style={styles.newsPosterLink}>DEB</Text>
                                                         </TouchableOpacity>
                                                         <Icon name='ios-time-outline' style={styles.headertimeIcon} />
-                                                        <Text style={styles.newsPosterLink}>2hr ago</Text>
+                                                        <Text style={styles.newsPosterLink}>Fecha: 13 de Enero del 2016</Text>
                                                     </Col>
                                                     <Col>
                                                         <TouchableOpacity style={styles.newsPosterTypeView}>
@@ -95,15 +101,15 @@ class Home extends Component {
                                         <Image style={styles.newsPoster} source={require('../../../images/NewsIcons/4.jpg')}>
                                             <View  style={styles.swiperTextContent}>
                                                 <Text numberOfLines={2} style={styles.newsPosterHeader}>
-                                                    Lorem Ipsum is simply dummy text of the printing
+
                                                 </Text>
                                                 <Grid style={styles.swiperContentBox}>
                                                     <Col style={{flexDirection:'row'}}>
                                                         <TouchableOpacity>
-                                                            <Text style={styles.newsPosterLink}>SKY.com</Text>
+                                                            <Text style={styles.newsPosterLink}>DEB</Text>
                                                         </TouchableOpacity>
                                                         <Icon name='ios-time-outline' style={styles.headertimeIcon} />
-                                                        <Text style={styles.newsPosterLink}>1day ago</Text>
+                                                        <Text style={styles.newsPosterLink}>Fecha: 13 de Enero del 2016</Text>
                                                     </Col>
                                                     <Col>
                                                         <TouchableOpacity style={styles.newsPosterTypeView}>
@@ -122,20 +128,16 @@ class Home extends Component {
                             <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
                                 <View style={styles.newsContent}>
                                     <Text numberOfLines={2} style={styles.newsHeader}>
-                                        Lorem Ipsum is simply dummy text of the printing
+                                    Debate Trump vs Clinton.
+                                    Auditorio, Universidad Latina, Sede San Pedro.
                                     </Text>
                                     <Grid style={styles.swiperContentBox}>
                                         <Col style={{flexDirection:'row'}}>
                                             <TouchableOpacity>
-                                                <Text style={styles.newsLink}>CDC</Text>
+                                                <Text style={styles.newsLink}>DEB</Text>
                                             </TouchableOpacity>
                                             <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>1h ago</Text>
-                                        </Col>
-                                        <Col>
-                                            <TouchableOpacity style={styles.newsTypeView}>
-                                                <Text style={styles.newsTypeText}>ENVIRONMENT</Text>
-                                            </TouchableOpacity>
+                                            <Text style={styles.newsLink}>Fecha: 13 de Enero, 2017</Text>
                                         </Col>
                                     </Grid>
                                 </View>
@@ -144,21 +146,17 @@ class Home extends Component {
                             <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
                                 <View style={styles.newsContent}>
                                     <Text numberOfLines={2} style={styles.newsHeader}>
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        Debate Elecciones presidenciales 2018
                                     </Text>
                                     <Grid style={styles.swiperContentBox}>
                                         <Col style={{flexDirection:'row'}}>
                                             <TouchableOpacity>
-                                                <Text style={styles.newsLink}>SPACE.com</Text>
+                                                <Text style={styles.newsLink}>DEB</Text>
                                             </TouchableOpacity>
                                             <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>5h ago</Text>
+                                            <Text style={styles.newsLink}>Fecha 12 de marzo, 2017</Text>
                                         </Col>
-                                        <Col>
-                                            <TouchableOpacity style={styles.newsTypeView}>
-                                                <Text style={styles.newsTypeText}>SCIENCE</Text>
-                                            </TouchableOpacity>
-                                        </Col>
+
                                     </Grid>
                                 </View>
                             </TouchableOpacity>
@@ -166,20 +164,15 @@ class Home extends Component {
                             <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
                                 <View style={styles.newsContent}>
                                     <Text numberOfLines={2} style={styles.newsHeader}>
-                                        It has survived not only five centuries
+                                        Debate test
                                     </Text>
                                     <Grid style={styles.swiperContentBox}>
                                         <Col style={{flexDirection:'row'}}>
                                             <TouchableOpacity>
-                                                <Text style={styles.newsLink}>SKY.com</Text>
+                                                <Text style={styles.newsLink}>DEB</Text>
                                             </TouchableOpacity>
                                             <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>2days ago</Text>
-                                        </Col>
-                                        <Col>
-                                            <TouchableOpacity style={styles.newsTypeView}>
-                                                <Text style={styles.newsTypeText}>WORLD</Text>
-                                            </TouchableOpacity>
+                                            <Text style={styles.newsLink}>Fecha 10 de junio, 2017</Text>
                                         </Col>
                                     </Grid>
                                 </View>

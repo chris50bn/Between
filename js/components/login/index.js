@@ -15,6 +15,10 @@ var URL='http://between.azurewebsites.net/RestServer1/ws/cliente/insertUsuario';
 
 class Login extends Component {
 
+    static propTypes = {
+      setUser: React.PropTypes.func,
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -24,14 +28,36 @@ class Login extends Component {
         this.constructor.childContextTypes = {
             theme: React.PropTypes.object
         }
-    }
+      }
+
+      onLoginPressed(){
+        try {
+          fetch(URL+"?" + "&correo="+this.state.correo + "&contrasenna="+this.state.contrasena)
+            .then(function(res) {
+            return res.json(),
+            this.redirect('home')
+          })
+          .then(json => callback(null, json))
+          .catch(error => callback(error, null))
+
+        } catch(error) {
+            this.setState({error: error});
+            console.log("error " + error);
+            this.setState({showProgress: false});
+        }
+      }
 
     replaceRoute(route, passProps) {
         this.props.replaceRoute(route, passProps);
     }
 
+    setUser(username) {
+      this.props.setUser(username);
+    }
+
     pushNewRoute(route, passProps) {
          this.props.pushNewRoute(route, passProps);
+         this.setUser(this.state.username);
     }
 
     render() {
@@ -103,12 +129,17 @@ class Login extends Component {
 }
 
 
+
+
+
 function bindActions(dispatch){
     return {
         replaceRoute:(route, passprops) => dispatch(replaceRoute(route, passprops)),
-        pushNewRoute:(route, passprops) => dispatch(pushNewRoute(route, passprops))
+        pushNewRoute:(route, passprops) => dispatch(pushNewRoute(route, passprops)),
+        setUser: username => dispatch(setUser(username)),
     }
 }
+
 
 
 export default connect(null, bindActions)(Login);

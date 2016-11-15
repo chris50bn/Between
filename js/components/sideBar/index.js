@@ -37,9 +37,9 @@ class SideBar extends Component {
                                 <Icon name='ios-keypad-outline' />
                                 <Text style={styles.linkText}>CHANNELS</Text>
                             </ListItem>
-                            <ListItem button onPress={() => this.navigateTo('overview')}  iconLeft style={styles.links} >
+                            <ListItem button onPress={() => this.navigateTo('secciones')}  iconLeft style={styles.links} >
                               <Icon name='ios-stats' />
-                              <Text style={styles.linkText}> OVERVIEW</Text>
+                              <Text style={styles.linkText}> SECCIONES</Text>
                             </ListItem>
                             <ListItem button onPress={() => this.navigateTo('calendar')}  iconLeft style={styles.links} >
                                 <Icon name='ios-calendar-outline' />
@@ -64,6 +64,10 @@ class SideBar extends Component {
                             <ListItem button onPress={() => this.navigateTo('feedback')} iconLeft style={styles.links} >
                                 <Icon name='ios-paper-outline' />
                                 <Text style={styles.linkText}>FEEDBACK</Text>
+                            </ListItem>
+                            <ListItem button onPress={() => this.navigateTo('participar')} iconLeft style={styles.links} >
+                                <Icon name='ios-paper-outline' />
+                                <Text style={styles.linkText}>PARTICIPAR</Text>
                             </ListItem>
                         </List>
 

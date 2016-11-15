@@ -30,12 +30,9 @@ class HeaderContent extends Component {
                         <Icon name='ios-menu' style={{fontSize: 32, lineHeight: 36}} />
                     </Button>
 
-                    <Image source={require('../../../images/Header-Logonew.png')} style={styles.imageHeader}>
+                    <Image source={require('../../../images/B_Logo_07.png')} style={styles.imageHeader}>
                     </Image>
 
-                    <Button transparent style={styles.btnHeader} onPress={() => this.popRoute()}>
-                        <Icon name='ios-search' style={{fontSize: 32, lineHeight: 36}} />
-                    </Button>
 				</View>
 			</View>
 		);

@@ -28,6 +28,8 @@ import Timeline from './components/timeline';
 import Widgets from './components/widgets';
 import NeedHelp from './components/needhelp';
 import SplashPage from './components/splashscreen/';
+import Participar  from './components/participarDeb/';
+import Secciones from './components/secciones/'
 import { statusBarColor } from "./themes/base-theme";
 
 Navigator.prototype.replaceWithAnimation = function (route) {
@@ -193,6 +195,10 @@ class AppNavigator extends Component {
                 return <Widgets navigator={navigator} />;
             case 'needhelp':
                 return <NeedHelp navigator={navigator} />;
+            case 'participar':
+              return <Participar navigator={navigator} />;
+            case 'secciones':
+              return <Secciones navigator={navigator} />;
             default :
                 return <Login navigator={navigator}  />;
         }

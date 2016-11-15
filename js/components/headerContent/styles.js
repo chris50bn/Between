@@ -7,23 +7,23 @@ var { StyleSheet, Dimensions, Platform } = React;
 module.exports = StyleSheet.create({
 	header: {
 		width: Dimensions.get('window').width,
-		paddingLeft: 15,
-		paddingRight: 15
+		paddingRight: 150
+
 	},
 	rowHeader: {
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignSelf: 'stretch',
-		paddingTop: Platform.OS === 'android' ? 7 : 0
+		paddingTop: Platform.OS === 'android' ? 5 : 0
 	},
 	btnHeader: {
 		paddingTop: 10
 	},
 	imageHeader: {
-		height: 25,
-		width: 95,
+		height: 35,
+		width: 105,
 		resizeMode: 'contain',
-		marginTop: 10
+		marginTop: 7
 	}
 });
