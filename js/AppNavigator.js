@@ -19,6 +19,7 @@ import Profile from './components/profile/';
 import Calendar from './components/calendar/';
 import Walkthrough from './components/walkthrough/';
 import SideBar from './components/sideBar';
+import MyDebates from './components/MyDebates';
 import Settings from './components/settings';
 import Channel from './components/channel';
 import Channels from './components/channels';
@@ -193,6 +194,8 @@ class AppNavigator extends Component {
                 return <Widgets navigator={navigator} />;
             case 'needhelp':
                 return <NeedHelp navigator={navigator} />;
+            case 'MyDebates':
+                return <MyDebates navigator={MyDebates} />
             default :
                 return <Login navigator={navigator}  />;
         }

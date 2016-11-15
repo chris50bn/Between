@@ -41,6 +41,10 @@ class SideBar extends Component {
                               <Icon name='ios-stats' />
                               <Text style={styles.linkText}> OVERVIEW</Text>
                             </ListItem>
+                            <ListItem button onPress={() => this.navigateTo('MyDebates')}  iconLeft style={styles.links} >
+                              <Icon name='ios-stats' />
+                              <Text style={styles.linkText}> MY DEBATES</Text>
+                            </ListItem>
                             <ListItem button onPress={() => this.navigateTo('calendar')}  iconLeft style={styles.links} >
                                 <Icon name='ios-calendar-outline' />
                                 <Text style={styles.linkText}>CALENDAR</Text>
