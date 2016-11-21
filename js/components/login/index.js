@@ -11,7 +11,7 @@ import { Grid, Col, Row } from 'react-native-easy-grid';
 
 import login from './login-theme';
 import styles from './styles';
-var URL='http://between.azurewebsites.net/RestServer1/ws/cliente/insertUsuario';
+var URL='http://between2.azurewebsites.net/RestA3/ws/between/login';
 
 class Login extends Component {
 
@@ -22,42 +22,56 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+            correo: '',
+            pass: '',
+            cliente: '',
+            error: false,
         };
         this.constructor.childContextTypes = {
             theme: React.PropTypes.object
         }
       }
 
-      onLoginPressed(){
-        try {
-          fetch(URL+"?" + "&correo="+this.state.correo + "&contrasenna="+this.state.contrasena)
-            .then(function(res) {
-            return res.json(),
-            this.redirect('home')
-          })
-          .then(json => callback(null, json))
-          .catch(error => callback(error, null))
 
-        } catch(error) {
-            this.setState({error: error});
-            console.log("error " + error);
-            this.setState({showProgress: false});
-        }
+
+
+
+      onLoginPressed(){
+        fetch("http://between2.azurewebsites.net/RestA3/ws/between/login"+"?correo="+this.state.correo+"&pass="+this.state.pass)
+            .then((response) => response.json())
+            .then((responseData) => {
+              this.setState({
+                cliente:responseData.respuesta,
+              });
+            })
+            .done();
+          //  this.replaceRoute("home");
+          if(this.state.cliente.respuesta){
+            console.log(this.state.cliente);
+            this.replaceRoute("home");
+          }else{
+            this.error=true;
+          }
       }
 
     replaceRoute(route, passProps) {
         this.props.replaceRoute(route, passProps);
     }
 
-    setUser(username) {
-      this.props.setUser(username);
-    }
 
     pushNewRoute(route, passProps) {
          this.props.pushNewRoute(route, passProps);
-         this.setUser(this.state.username);
+        // this.setUser(this.state.username);
+    }
+
+    renderError(){
+      if(this.error==true){
+      return(
+        <Text style={{color: 'red'}} >
+            Correo y/o contraseña incorrectos.
+        </Text>
+        )
+      }
     }
 
     render() {
@@ -72,7 +86,7 @@ class Login extends Component {
                                 style={[styles.inputGrp, {borderWidth: 0, paddingLeft: 15}]}
                             >
                                 <Icon name='ios-person-outline' />
-                                <Input placeholder='Nombre de Usuario' style={styles.input} onChangeText={(username) => this.setState({username})}/>
+                                <Input placeholder='Nombre de Usuario' style={styles.input} onChangeText={(val) => this.setState({correo: val})}/>
                             </InputGroup>
 
                             <InputGroup
@@ -84,15 +98,17 @@ class Login extends Component {
                                     placeholder='Contraseña'
                                     secureTextEntry={true}
                                     style={styles.input}
+                                    onChangeText={(val) => this.setState({pass: val})}
                                 />
                             </InputGroup>
 
                             <Button
                                 rounded primary block
-                                onPress={() => this.replaceRoute('walkthrough')}
+                                onPress={this.onLoginPressed.bind(this)}
                                 style={styles.loginBtn} textStyle={{fontSize: 17}}  >
                                 Ingresar
                             </Button>
+                            {this.renderError()}
 
                             <View style={styles.otherLinksContainer}>
                                 <Grid>
@@ -136,7 +152,7 @@ function bindActions(dispatch){
     return {
         replaceRoute:(route, passprops) => dispatch(replaceRoute(route, passprops)),
         pushNewRoute:(route, passprops) => dispatch(pushNewRoute(route, passprops)),
-        setUser: username => dispatch(setUser(username)),
+      //  setUser: username => dispatch(setUser(username)),
     }
 }
 

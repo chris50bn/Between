@@ -1,3 +1,4 @@
+
 'use strict';
 
 import React, { Component} from 'react';
@@ -33,17 +34,10 @@ class SideBar extends Component {
                                 <Icon name='ios-grid-outline' />
                                 <Text style={styles.linkText} >NEWS</Text>
                             </ListItem>
-                            <ListItem button onPress={() => this.navigateTo('channels')}  iconLeft style={styles.links} >
-                                <Icon name='ios-keypad-outline' />
-                                <Text style={styles.linkText}>CHANNELS</Text>
-                            </ListItem>
+
                             <ListItem button onPress={() => this.navigateTo('secciones')}  iconLeft style={styles.links} >
                               <Icon name='ios-stats' />
                               <Text style={styles.linkText}> SECCIONES</Text>
-                            </ListItem>
-                            <ListItem button onPress={() => this.navigateTo('calendar')}  iconLeft style={styles.links} >
-                                <Icon name='ios-calendar-outline' />
-                                <Text style={styles.linkText}>CALENDAR</Text>
                             </ListItem>
                             <ListItem button onPress={() => this.navigateTo('timeline')}  iconLeft style={styles.links} >
                                 <Icon name='ios-timer-outline' />
@@ -53,17 +47,9 @@ class SideBar extends Component {
                                 <Icon name='ios-person-outline' />
                                 <Text style={styles.linkText}> PROFILE</Text>
                             </ListItem>
-                            <ListItem button onPress={() => this.navigateTo('widgets')}  iconLeft style={styles.links} >
-                                <Icon name='ios-grid' />
-                                <Text style={styles.linkText}>WIDGETS</Text>
-                            </ListItem>
-                            <ListItem button onPress={() => this.navigateTo('settings')} iconLeft style={styles.links}>
-                                <Icon name='ios-settings-outline' />
-                                <Text style={styles.linkText}>SETTINGS</Text>
-                            </ListItem>
-                            <ListItem button onPress={() => this.navigateTo('feedback')} iconLeft style={styles.links} >
-                                <Icon name='ios-paper-outline' />
-                                <Text style={styles.linkText}>FEEDBACK</Text>
+                            <ListItem button onPress={() => this.navigateTo('preguntas')} iconLeft style={styles.links} >
+                                <Icon name='ios-help-circle' />
+                                <Text style={styles.linkText}> PREGUNTAS</Text>
                             </ListItem>
                             <ListItem button onPress={() => this.navigateTo('participar')} iconLeft style={styles.links} >
                                 <Icon name='ios-paper-outline' />

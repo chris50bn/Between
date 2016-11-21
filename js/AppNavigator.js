@@ -29,7 +29,8 @@ import Widgets from './components/widgets';
 import NeedHelp from './components/needhelp';
 import SplashPage from './components/splashscreen/';
 import Participar  from './components/participarDeb/';
-import Secciones from './components/secciones/'
+import Secciones from './components/secciones/';
+import Preguntas from './components/preguntas/';
 import { statusBarColor } from "./themes/base-theme";
 
 Navigator.prototype.replaceWithAnimation = function (route) {
@@ -199,6 +200,8 @@ class AppNavigator extends Component {
               return <Participar navigator={navigator} />;
             case 'secciones':
               return <Secciones navigator={navigator} />;
+            case 'preguntas':
+              return <Preguntas navigator={navigator} />;
             default :
                 return <Login navigator={navigator}  />;
         }

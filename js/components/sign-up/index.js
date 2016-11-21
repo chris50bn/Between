@@ -10,7 +10,6 @@ import { Container, Content, Text, Button, Icon, InputGroup, Input, View } from 
 
 import theme from '../login/login-theme';
 import styles from './styles';
-var URL='http://between.azurewebsites.net/RestServer1/ws/cliente/insertUsuario';
 
 class SignUp extends Component {
 
@@ -24,7 +23,11 @@ class SignUp extends Component {
             nombre: '',
             apellidos: '',
             correo: '',
-            contrasena: '',
+            pass: '',
+            respuesta: '',
+            error: false,
+            loaded: false,
+            cargando: false,
         };
         this.constructor.childContextTypes = {
             theme: React.PropTypes.object,
@@ -34,22 +37,53 @@ class SignUp extends Component {
     popRoute() {
         this.props.popRoute();
     }
+//      http://between2.azurewebsites.net/RestA3/ws/between/registro?correo=chris50bn@gmail.com&pass=1234&nombre=Christopher&apellido=Bonilla&tipo=1
 
 
   onRegisterPressed(){
     try {
-      fetch(URL+"?" + "nombre="+this.state.nombre+" &apellido= "+this.state.apellidos+"&contrasenna="+this.state.contrasena+"&correo="+this.state.correo+"&tipo=1")
-        .then(function(res) {
-        return res.json(),
-        this.redirect('home')
-      })
-      .then(json => callback(null, json))
-      .catch(error => callback(error, null))
-
-    } catch(error) {
-        this.setState({error: error});
-        console.log("error " + error);
-        this.setState({showProgress: false});
+        this.cargando= true,
+        //fetch("http://between2.azurewebsites.net/RestA3/ws/between/registro"+"?"+"correo="+this.state.correo+"&pass="+this.state.pass+ "&nombre="+this.state.nombre+"&apellido= "+this.state.apellidos+"&tipo=1")
+        fetch("http://between2.azurewebsites.net/RestA3/ws/between/registro?correo=chris50bn@gmail.com&pass=1234&nombre=Christopher&apellido=Bonilla&tipo=1")
+            .then((response) => response.json())
+            .then((responseData) => {
+              this.setState({
+                this.loaded= true,
+                respuesta:responseData.respuesta,
+                this.cargando=false,
+              });
+            })
+            .done();
+            console.log(respuesta);
+    } catch (error) {
+        this.error=true;
+    }
+  }
+  renderResponse(){
+    if(this.loaded==true){
+      return(
+        <Text style={styles.responseText}>
+          {this.respuesta}
+        </Text>
+      )
+    }
+  }
+  renderError(){
+    if(this.error==true){
+    return(
+      <Text style={{color: 'red'}} >
+          Error intentelo más tarde.
+      </Text>
+      )
+    }
+  }
+  renderLoading(){
+    if(this.cargando==true){
+    return(
+      <Text style={styles.termsText} >
+          Creando Usuario...
+      </Text>
+      )
     }
   }
 
@@ -81,19 +115,21 @@ class SignUp extends Component {
 
                                     <InputGroup borderType='rounded' style={styles.inputGrp}>
                                         <Icon name='ios-unlock-outline' />
-                                        <Input placeholder='Contraseña' secureTextEntry={true}  style={styles.input}  onChangeText={(val) => this.setState({contrasena: val})}/>
+                                        _<Input placeholder='Contraseña' secureTextEntry={true}  style={styles.input}  onChangeText={(val) => this.setState({pass: val})}/>
                                     </InputGroup>
 
                                     <Button
                                         rounded transparent  block
-                                        //onPress={}
-                                        style={styles.signupBtn}
-                                        onPress={this.onRegisterPressed.bind(this)}
 
+                                        style={styles.signupBtn}
+
+                                        onPress={this.onRegisterPressed.bind(this)}
                                     >
                                         Continue
                                     </Button>
-
+                                    {this.renderLoading()}
+                                    {this.renderResponse()}
+                                    {this.renderError()}
                                     <TouchableOpacity>
                                         <Text style={styles.termsText}>Terms & Conditions</Text>
                                     </TouchableOpacity>
@@ -106,6 +142,8 @@ class SignUp extends Component {
     }
 }
 
+  //onPress={}
+  //onPress={this.onRegisterPressed.bind(this)}
 function bindAction(dispatch) {
     return {
         popRoute: () => dispatch(popRoute())

@@ -16,7 +16,7 @@ import theme from '../../themes/base-theme';
 import styles from './styles';
 var primary = require('../../themes/variable').brandPrimary;
 
-class Participar extends Component {
+class Preguntas extends Component {
 
   constructor(props) {
       super(props);
@@ -25,8 +25,8 @@ class Participar extends Component {
              x:0,
              y:0
           },
-          correo: '',
-          codigo: '',
+          equipo: '',
+          pregunta: '',
       };
 
       this.constructor.childContextTypes = {
@@ -36,7 +36,7 @@ class Participar extends Component {
 
   async onRegisterPressed(){
     try {
-      let response = await fetch(URL+"?" + "&correo="+this.state.correo+"&codigo=" + this.state.codigo)
+      let response = await fetch(URL+"?" + "&equipo="+this.state.equipo+"&pregunta=" + this.state.pregunta)
         .then(function(res) {
         return res.json(),
         this.redirect('home')
@@ -50,6 +50,7 @@ class Participar extends Component {
         this.setState({showProgress: false});
     }
   }
+
 
   replaceRoute(route) {
       this.props.replaceRoute(route);
@@ -66,24 +67,24 @@ class Participar extends Component {
 
                   <Content>
                       <View style={styles.feedbackHeaderContainer}>
-                          <Text style={styles.feedbackHeader}>Participar en un debate</Text>
-                          <Text note  style={styles.feedbackHead}>Ingrese el código que recibio a su correo para participar en un debate.</Text>
+                          <Text style={styles.feedbackHeader}>Realice una pregunta</Text>
+                          <Text note  style={styles.feedbackHead}>Ingrese el equipo y la pregunta que desea realizar.</Text>
                       </View>
                       <View style={styles.feedbackContainer}>
                         <InputGroup borderType='rounded' style={styles.inputGrp}>
                             <Icon name='ios-mail-outline' />
-                            <Input placeholder='Email' placeholderTextColor='#fff' style={styles.input} onChangeText={(val) => this.setState({correo: val})}/>
+                            <Input placeholder='Equipo' placeholderTextColor='#fff' style={styles.input} onChangeText={(val) => this.setState({equipo: val})}/>
                         </InputGroup>
                           <InputGroup borderType='rounded' style={styles.inputGrp}>
                               <Icon name='ios-mail-outline' />
-                              <Input placeholder='Código' placeholderTextColor='#fff' style={styles.input} onChangeText={(val) => this.setState({codigo: val})}/>
+                              <Input placeholder='Pregunta' placeholderTextColor='#fff' style={styles.input} onChangeText={(val) => this.setState({pregunta: val})}/>
                           </InputGroup>
 
                           <Button
                               rounded block transparent
                               onPress={() => this.replaceRoute('home')}
                               style={styles.signupBtn}>
-                              Enviar Código
+                              Enviar Pregunta
                           </Button>
                       </View>
                   </Content>
@@ -95,7 +96,8 @@ class Participar extends Component {
 
 function bindAction(dispatch) {
     return {
-        replaceRoute:(route) => dispatch(replaceRoute(route))    }
+        replaceRoute:(route) => dispatch(replaceRoute(route))
+    }
 }
 
-export default connect(null, bindAction)(Participar);
+export default connect(null, bindAction)(Preguntas);

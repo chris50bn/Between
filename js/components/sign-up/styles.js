@@ -50,5 +50,15 @@ module.exports = StyleSheet.create({
         opacity: 0.8,
         fontSize: 14,
         fontWeight: 'bold'
+    },
+    responseText: {
+        alignSelf: 'center',
+        marginTop: 20,
+        paddingBottom: 100,
+        opacity: 0.8,
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: 'red',
     }
+
 });
