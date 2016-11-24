@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { Image, View, TouchableOpacity } from 'react-native';
+import { Image, View, TouchableOpacity , ListView, AsyncStorage} from 'react-native';
 import { connect } from 'react-redux';
 
 import { pushNewRoute } from '../../actions/route';
@@ -17,19 +17,44 @@ import usuario from '../login/index';
 import styles from './styles';
 
 var user = require('../login/index').usuario;
-
+var REQUEST_URL = 'http://between2.azurewebsites.net/RestA3/ws/between/debates';
 class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state={
-          nombre:'',
-        };
+        this.state = {
+           dataSource: new ListView.DataSource({
+             rowHasChanged: (row1, row2) => row1 !== row2,
+           }),
+           loaded: false,
+         };
     }
 
     pushNewRoute(route) {
          this.props.pushNewRoute(route);
     }
+
+    componentDidMount() {
+        this.fetchData();
+      }
+
+      fetchData() {
+        fetch(REQUEST_URL)
+          .then((response) => response.json())
+          .then((responseData) => {
+            this.setState({
+              dataSource: this.state.dataSource.cloneWithRows(responseData.debates),
+              loaded: true,
+            });
+          })
+          .done();
+      }
+
+      renderDeb() {
+        if (!this.state.loaded) {
+          return this.renderLoadingView();
+        }
+      }
 
     render(user) {
         return (
@@ -123,133 +148,39 @@ class Home extends Component {
                                 </Swiper>
                             </View>
                         </View>
-
-                        <Card style={{backgroundColor: '#fff'}}>
-                            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
-                                <View style={styles.newsContent}>
-                                    <Text numberOfLines={2} style={styles.newsHeader}>
-                                    Debate Trump vs Clinton.
-                                    Auditorio, Universidad Latina, Sede San Pedro.
-                                    </Text>
-                                    <Grid style={styles.swiperContentBox}>
-                                        <Col style={{flexDirection:'row'}}>
-                                            <TouchableOpacity>
-                                                <Text style={styles.newsLink}>DEB</Text>
-                                            </TouchableOpacity>
-                                            <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>Fecha: 13 de Enero, 2017</Text>
-                                        </Col>
-                                    </Grid>
-                                </View>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
-                                <View style={styles.newsContent}>
-                                    <Text numberOfLines={2} style={styles.newsHeader}>
-                                        Debate Elecciones presidenciales 2018
-                                    </Text>
-                                    <Grid style={styles.swiperContentBox}>
-                                        <Col style={{flexDirection:'row'}}>
-                                            <TouchableOpacity>
-                                                <Text style={styles.newsLink}>DEB</Text>
-                                            </TouchableOpacity>
-                                            <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>Fecha 12 de marzo, 2017</Text>
-                                        </Col>
-
-                                    </Grid>
-                                </View>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
-                                <View style={styles.newsContent}>
-                                    <Text numberOfLines={2} style={styles.newsHeader}>
-                                        Debate test
-                                    </Text>
-                                    <Grid style={styles.swiperContentBox}>
-                                        <Col style={{flexDirection:'row'}}>
-                                            <TouchableOpacity>
-                                                <Text style={styles.newsLink}>DEB</Text>
-                                            </TouchableOpacity>
-                                            <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>Fecha 10 de junio, 2017</Text>
-                                        </Col>
-                                    </Grid>
-                                </View>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
-                                <View style={styles.newsContent}>
-                                    <Text numberOfLines={2} style={styles.newsHeader}>
-                                        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages
-                                    </Text>
-                                    <Grid style={styles.swiperContentBox}>
-                                        <Col style={{flexDirection:'row'}}>
-                                            <TouchableOpacity>
-                                                <Text style={styles.newsLink}>ESPN</Text>
-                                            </TouchableOpacity>
-                                            <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>12days ago</Text>
-                                        </Col>
-                                        <Col>
-                                            <TouchableOpacity style={styles.newsTypeView}>
-                                                <Text style={styles.newsTypeText}>SPORTS</Text>
-                                            </TouchableOpacity>
-                                        </Col>
-                                    </Grid>
-                                </View>
-                            </TouchableOpacity>
-
-
-                            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
-                                <View style={styles.newsContent}>
-                                    <Text numberOfLines={2} style={styles.newsHeader}>
-                                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested
-                                    </Text>
-                                    <Grid style={styles.swiperContentBox}>
-                                        <Col style={{flexDirection:'row'}}>
-                                            <TouchableOpacity>
-                                                <Text style={styles.newsLink}>ART.com</Text>
-                                            </TouchableOpacity>
-                                            <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>23days ago</Text>
-                                        </Col>
-                                        <Col>
-                                            <TouchableOpacity style={styles.newsTypeView}>
-                                                <Text style={styles.newsTypeText}>ART</Text>
-                                            </TouchableOpacity>
-                                        </Col>
-                                    </Grid>
-                                </View>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.pushNewRoute('story')}>
-                                <View style={styles.newsContent}>
-                                    <Text numberOfLines={2} style={styles.newsHeader}>
-                                        There are many variations of passages of Lorem Ipsum available
-                                    </Text>
-                                    <Grid style={styles.swiperContentBox}>
-                                        <Col style={{flexDirection:'row'}}>
-                                            <TouchableOpacity>
-                                                <Text style={styles.newsLink}>Money.com</Text>
-                                            </TouchableOpacity>
-                                            <Icon name='ios-time-outline' style={styles.timeIcon} />
-                                            <Text style={styles.newsLink}>2months ago</Text>
-                                        </Col>
-                                        <Col>
-                                            <TouchableOpacity style={styles.newsTypeView}>
-                                                <Text style={styles.newsTypeText}>FINANCE</Text>
-                                            </TouchableOpacity>
-                                        </Col>
-                                    </Grid>
-                                </View>
-                            </TouchableOpacity>
-                        </Card>
+                        <ListView
+                          dataSource={this.state.dataSource}
+                          renderRow={this.renderDebates}
+                          style={styles.listView}
+                        />
                     </Content>
                 </Image>
             </Container>
         )
     }
+
+    renderLoadingView() {
+      return (
+        <View style={styles.container}>
+          <Text>
+            Loading Debates...
+          </Text>
+        </View>
+      );
+    }
+
+    renderDebates(debates) {
+      return (
+        <View style={styles.newsContent}>
+          <View style={styles.rightContainer}>
+            <Text numberOfLines={2} style={styles.newsHeader}>{debates.tema}</Text>
+            <Text style={styles.newsLink}>{debates.fecha}</Text>
+          </View>
+        </View>
+      );
+    }
+
+
 }
 
 function bindAction(dispatch) {

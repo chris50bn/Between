@@ -42,20 +42,20 @@ class SignUp extends Component {
 
   onRegisterPressed(){
     try {
-        this.cargando= true,
-        //fetch("http://between2.azurewebsites.net/RestA3/ws/between/registro"+"?"+"correo="+this.state.correo+"&pass="+this.state.pass+ "&nombre="+this.state.nombre+"&apellido= "+this.state.apellidos+"&tipo=1")
-        fetch("http://between2.azurewebsites.net/RestA3/ws/between/registro?correo=chris50bn@gmail.com&pass=1234&nombre=Christopher&apellido=Bonilla&tipo=1")
+        this.cargando= true;
+        fetch("http://between2.azurewebsites.net/RestA3/ws/between/registro"+"?"+"correo="+this.state.correo+"&pass="+this.state.pass+ "&nombre="+this.state.nombre+"&apellido= "+this.state.apellidos+"&tipo=1")
+        //fetch("http://between2.azurewebsites.net/RestA3/ws/between/registro?correo=chris50bn@gmail.com&pass=1234&nombre=Christopher&apellido=Bonilla&tipo=1")
             .then((response) => response.json())
             .then((responseData) => {
               this.setState({
-                this.loaded= true,
-                respuesta:responseData.respuesta,
-                this.cargando=false,
+                respuesta: responseData,
+                loaded:true,
+                cargando: false,
               });
             })
-            .done();
             console.log(respuesta);
     } catch (error) {
+        this.cargando= false,
         this.error=true;
     }
   }
@@ -63,7 +63,7 @@ class SignUp extends Component {
     if(this.loaded==true){
       return(
         <Text style={styles.responseText}>
-          {this.respuesta}
+          {JSON.Parse(this.respuesta.respuesta)}
         </Text>
       )
     }
