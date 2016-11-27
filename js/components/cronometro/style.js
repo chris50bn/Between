@@ -72,35 +72,73 @@ module.exports = StyleSheet.create({
         marginLeft: Platform.OS === 'android' ? 10 : 0,
         // marginTop: Platform.OS === 'android' ? 5 : -5
     },
-    likeIcon: {
-        fontSize: 16,
-        marginRight: -110,
-        marginLeft: 30,
-        marginTop: Platform.OS === 'android' ? 1 : 5
-    },
-    commentBox: {
-        backgroundColor: '#fff',
-        flexDirection: 'row',
-        height: 55,
-        alignItems: 'center'
-    },
-    attachIconContainer: {
-        padding: 10,
-        // paddingTop: 10
-    },
-    attachIcon : {
-        color: '#797979',
-        fontSize: 27
-    },
     input: {
         color: '#222'
     },
-    arrowForwardIcon: {
-        alignSelf: 'flex-end',
-        color: primary
+    header:{
+      borderBottomWidth: 0.5,
+      paddingTop: 20,
+      paddingBottom: 10,
+      backgroundColor: '#F9F9F9'
     },
-    arrowForwardIconContainer: {
-        paddingRight: 20,
-        paddingTop: 5
-    }
+    title:{
+      alignSelf: 'center',
+      fontWeight: '600'
+    },
+    timerWrapper:{
+      backgroundColor:'#FFFFFF',
+      justifyContent: 'center',
+      flex: 3,
+    },
+    top:{
+        flex: 1,
+      },
+    buttom:{
+        height: 80,
+        width: 80,
+        borderRadius: 40,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#fff'
+      },
+    buttonWrapper:{
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingTop: 15,
+        paddingBottom: 30
+      },
+     mainTimer: {
+       fontSize: 60,
+       fontWeight: '100',
+       alignSelf: 'flex-end',
+     },
+     lapTimer: {
+       fontSize: 18,
+       alignSelf: 'flex-end'
+     },
+     timerWrapperInner: {
+       alignSelf: 'center',
+     },
+     lapRow:{
+       flexDirection: 'row',
+       justifyContent: 'space-around',
+       height: 40,
+       paddingTop: 10,
+       borderBottomWidth: 0.5,
+       borderBottomColor: '#ddd'
+     },
+     lapNumber:{
+       fontSize: 16,
+       color: '#777'
+     },
+     lapTime:{
+       color: '#000',
+       fontSize: 20,
+     },
+     startBtn: {
+       color:'#00cc00'
+     },
+     stopBtn:{
+       color:'red',
+     },
 });

@@ -55,6 +55,11 @@ class SideBar extends Component {
                                 <Icon name='ios-paper-outline' />
                                 <Text style={styles.linkText}>PARTICIPAR</Text>
                             </ListItem>
+                            <ListItem button onPress={() => this.navigateTo('cronometro')} iconLeft style={styles.links} >
+                                <Icon name='ios-paper-outline' />
+                                <Text style={styles.linkText}>CRONOMETRO</Text>
+                            </ListItem>
+  
                         </List>
 
                         <View style={styles.logoutContainer}>

@@ -51,6 +51,8 @@ class Login extends Component {
             this.replaceRoute("home");
           }else{
             this.error=true;
+            this.replaceRoute("home");
+
           }
       }
 

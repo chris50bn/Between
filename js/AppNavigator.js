@@ -31,6 +31,7 @@ import SplashPage from './components/splashscreen/';
 import Participar  from './components/participarDeb/';
 import Secciones from './components/secciones/';
 import Preguntas from './components/preguntas/';
+import Cronometro from './components/cronometro';
 import { statusBarColor } from "./themes/base-theme";
 
 Navigator.prototype.replaceWithAnimation = function (route) {
@@ -202,6 +203,8 @@ class AppNavigator extends Component {
               return <Secciones navigator={navigator} />;
             case 'preguntas':
               return <Preguntas navigator={navigator} />;
+            case 'cronometro':
+              return <Cronometro navigator={navigator} />;
             default :
                 return <Login navigator={navigator}  />;
         }

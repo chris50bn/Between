@@ -27,6 +27,7 @@ class Home extends Component {
              rowHasChanged: (row1, row2) => row1 !== row2,
            }),
            loaded: false,
+           error: false,
          };
     }
 
@@ -39,8 +40,9 @@ class Home extends Component {
       }
 
       fetchData() {
+        try{
         fetch(REQUEST_URL)
-          .then((response) => response.json())
+          //.then((response) => response.json())
           .then((responseData) => {
             this.setState({
               dataSource: this.state.dataSource.cloneWithRows(responseData.debates),
@@ -48,12 +50,25 @@ class Home extends Component {
             });
           })
           .done();
+        }catch (error){
+          error: true;
+        }
       }
 
       renderDeb() {
         if (!this.state.loaded) {
           return this.renderLoadingView();
         }
+      }
+
+      renderError(){
+          if(!this.state.error){
+            return (
+              <Text style={styles.newsHeader}>
+                No hay debates activos :(
+              </Text>
+            );
+          }
       }
 
     render(user) {
@@ -153,6 +168,7 @@ class Home extends Component {
                           renderRow={this.renderDebates}
                           style={styles.listView}
                         />
+                        {this.renderError()}
                     </Content>
                 </Image>
             </Container>
